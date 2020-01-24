@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <div class="text-center">
-      <q-btn color="red" icon="mail" icon-right="send" @click="login()" label="Login com Conta Google" />
-    </div>
-  </div>
+  <q-layout view="hHh lpR fFf" class="backgroud">
+    <q-page-container class="absolute-center">
+      <div class="text-h5 text-center">Faça Login para continuar.</div>
+      <q-btn flat style="color: #FF0080" class="on-right q-pl-lg" @click="login()" label="Login" />
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script>
@@ -40,4 +41,12 @@ export default {
 </script>
 
 <style scoped>
+.backgroud {
+  background: rgb(180, 177, 238);
+  background: radial-gradient(
+    circle,
+    rgba(180, 177, 238, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
 </style>
