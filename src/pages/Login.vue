@@ -1,9 +1,9 @@
 <template>
   <q-layout view="hHh lpR fFf" class="backgroud">
-    <q-page-container class="absolute-center">
-      <div class="text-h5 text-center">Faça Login para continuar.</div>
-      <q-btn flat style="color: #FF0080" class="on-right q-pl-lg" @click="login()" label="Login" />
-    </q-page-container>
+      <div class="absolute-center text-center">
+        <div class="text-h5">Faça Login para continuar.</div>
+        <q-btn flat style="color: #FF0080" @click="login()" label="Login" />
+      </div>
   </q-layout>
 </template>
 
