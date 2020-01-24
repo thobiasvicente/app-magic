@@ -5,16 +5,21 @@
         <q-icon name="search" v-on:click="submit(name)"/>
       </template>
     </q-input>
-      <p>{{card}}</p>  
+     <card v-if="showCard" :card="card"/> 
   </q-page>
 </template>
 
 <script>
 import axios from 'axios'
+import card from '../components/Card'
 export default {
+  components: {
+    card
+  },
   data() {
     return {
-      card: '',
+      card: {},
+      showCard: false,
       name: ''
     }
    
@@ -23,8 +28,18 @@ export default {
   methods: {
     submit (name) {
       axios.get(`https://api.scryfall.com/cards/named?fuzzy=${name}`)
-      .then(response => (this.card = response.data))
-      .catch(err => (err))
+      .then((response) => {
+        if (response) {
+          alert(response)
+          this.card = response.data
+          this.showCard = true
+        }
+      })
+      .catch((err) => {
+        if (err) {
+          this.showCard = false
+        }
+      })
     },
    
   },
