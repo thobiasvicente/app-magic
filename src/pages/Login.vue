@@ -26,9 +26,7 @@ export default {
         .catch(function(error) {
           let errorCode = error.code;
           let errorMessage = error.message;
-          // The email of the user's account used.
           let email = error.email;
-          // The firebase.auth.AuthCredential type that was used.
           let credential = error.credential;
           // ...
         });
