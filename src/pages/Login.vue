@@ -24,7 +24,6 @@ export default {
           this.$router.push("/home");
         })
         .catch(function(error) {
-          // Handle Errors here.
           let errorCode = error.code;
           let errorMessage = error.message;
           // The email of the user's account used.
