@@ -1,17 +1,6 @@
 <template>
   <q-layout view="hHh lpR fFf" class="backgroud">
     <div class="row">
-      <div class="col-12">
-        <div class="flex flex-center q-pt-xl">
-          <q-input v-model="name" label="Search Cards" v-on:keyup.enter="submit(name)">
-            <template v-slot:append>
-              <q-icon name="search" v-on:click="submit(name)" />
-            </template>
-          </q-input>
-        </div>
-      </div>
-    </div>
-    <div class="row">
       <div class="col-12 col-md">
         <div class="flex flex-center q-pt-xl">
           <q-select
@@ -25,6 +14,7 @@
             @filter="filterFn"
             hint="Mininum 4 characters to trigger autocomplete"
             style="width: 250px; padding-bottom: 32px"
+            v-on:keyup.enter="submit(model)"
           >
             <template v-slot:no-option>
               <q-item>
