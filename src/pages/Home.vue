@@ -4,7 +4,6 @@
       <div class="col-12 col-md">
         <div class="flex flex-center q-pt-xl">
           <q-select
-            filled
             v-model="model"
             use-input
             hide-selected
@@ -12,6 +11,7 @@
             input-debounce="0"
             :options="options"
             @filter="filterFn"
+            option-disable="cannotSelect"
             hint="Mininum 4 characters to trigger autocomplete"
             style="width: 250px; padding-bottom: 32px"
             v-on:keyup.enter="submit(model)"
