@@ -1,4 +1,4 @@
-# Quasar App (bar)
+# Quasar App (magic)
 
 A Quasar Framework app
 
