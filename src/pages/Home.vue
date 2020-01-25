@@ -2,27 +2,9 @@
   <q-layout view="hHh lpR fFf" class="backgroud">
     <div class="row">
       <div class="col-12 col-md">
-        <div class="flex flex-center q-pt-xl">
-          <q-select
-            v-model="model"
-            use-input
-            hide-selected
-            fill-input
-            input-debounce="0"
-            :options="options"
-            @filter="filterFn"
-            option-disable="cannotSelect"
-            hint="Mininum 4 characters to trigger autocomplete"
-            style="width: 250px; padding-bottom: 32px"
-            v-on:keyup.enter="submit(model)"
-          >
-            <template v-slot:no-option>
-              <q-item>
-                <q-item-section class="text-grey">No results</q-item-section>
-              </q-item>
-            </template>
-          </q-select>
-        </div>
+
+        <SelectCard @modelo="getModel" :submit="submit" :options="options" :filterFn="filterFn"/>
+    
       </div>
     </div>
     <div class="row">
@@ -38,10 +20,13 @@
 <script>
 import axios from "axios";
 import card from "../components/Card";
+import SelectCard from "../components/SelectCard"
+
 const stringOptions = [];
 export default {
   components: {
-    card
+    card,
+    SelectCard
   },
   data() {
     return {
@@ -54,6 +39,10 @@ export default {
   },
 
   methods: {
+    getModel(model){
+      this.model = model
+      
+    },
     submit(name) {
       axios
         .get(`https://api.scryfall.com/cards/named?fuzzy=${name}`)
@@ -68,6 +57,7 @@ export default {
             this.showCard = false;
           }
         });
+
     },
     filterFn(val, update, abort) {
       if (val.length < 4) {
