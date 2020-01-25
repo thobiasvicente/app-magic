@@ -20,7 +20,6 @@ export default {
         .signInWithPopup(provider)
         .then(result => {
           let token = result.credential.accessToken;
-          // The signed-in user info.
           let user = result.user;
           this.$router.push("/home");
         })
