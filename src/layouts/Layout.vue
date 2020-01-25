@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated class="row justify-center">
+    <q-header elevated class="q-pa-xs bg-purple text-white shadow-2 row flex flex-center">
       <q-toolbar class="col">
         <q-btn
           flat
@@ -11,25 +11,8 @@
           icon="menu"
           @click="leftDrawer = !leftDrawer"
         />
-        <q-toolbar-title>
-          Magic
-        </q-toolbar-title>
+         <q-btn flat label="Magic Trade Cards" />
       </q-toolbar>
-
-      <q-tabs>
-        <q-route-tab
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
     </q-header>
 
     <!-- (Optional) The Footer -->

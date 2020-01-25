@@ -1,10 +1,8 @@
 <template>
-  <q-layout view="hHh lpR fFf" class="backgroud">
+  <q-layout view="hHh lpR fFf">
     <div class="row">
       <div class="col-12 col-md">
-
-        <SelectCard @modelo="getModel" :submit="submit" :options="options" :filterFn="filterFn"/>
-    
+        <SelectCard @modelo="getModel" :submit="submit" :options="options" :filterFn="filterFn" />
       </div>
     </div>
     <div class="row">
@@ -20,10 +18,21 @@
 <script>
 import axios from "axios";
 import card from "../components/Card";
-import SelectCard from "../components/SelectCard"
+import SelectCard from "../components/SelectCard";
 
 const stringOptions = [];
 export default {
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          next();
+        } else {
+          vm.$router.push("/login");
+        }
+      });
+    });
+  },
   components: {
     card,
     SelectCard
@@ -39,9 +48,8 @@ export default {
   },
 
   methods: {
-    getModel(model){
-      this.model = model
-      
+    getModel(model) {
+      this.model = model;
     },
     submit(name) {
       axios
@@ -57,7 +65,6 @@ export default {
             this.showCard = false;
           }
         });
-
     },
     filterFn(val, update, abort) {
       if (val.length < 4) {
@@ -91,10 +98,6 @@ export default {
 .my-card {
   width: 100%;
   max-width: 250px;
-}
-
-.backgroud {
-  background: #f0f0f0;
 }
 </style>
 

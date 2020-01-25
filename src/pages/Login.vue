@@ -1,9 +1,9 @@
 <template>
-  <q-layout view="hHh lpR fFf" class="backgroud">
-      <div class="absolute-center text-center">
-        <div class="text-h5">Faça Login para continuar.</div>
-        <q-btn flat style="color: #FF0080" @click="login()" label="Login" />
-      </div>
+  <q-layout view="hHh lpR fFf" class="background">
+    <div class="absolute-center text-center">
+      <div class="text-h5 text-white">Faça Login para continuar.</div>
+      <q-btn color="purple" text-color="white" class="q-mt-md" label="Login" @click="login()" />
+    </div>
   </q-layout>
 </template>
 
@@ -35,13 +35,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.backgroud {
-  background: rgb(180, 177, 238);
-  background: radial-gradient(
-    circle,
-    rgba(180, 177, 238, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  );
-}
-</style>

@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import firebase from 'firebase'
+import VueParticles from 'vue-particles'
 
 import routes from './routes'
 
 Vue.use(VueRouter)
+Vue.use(VueParticles)
 
 var firebaseConfig = {
   apiKey: "AIzaSyDwxKZ5a7GAkw_vO5F--1DYHBvcN1KDOp4",
