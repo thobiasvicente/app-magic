@@ -11,7 +11,6 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        {{ lorem }}
       </q-card-section>
     </q-card>
 
