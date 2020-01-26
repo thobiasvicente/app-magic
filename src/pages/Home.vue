@@ -19,6 +19,7 @@
 import axios from "axios";
 import card from "../components/Card";
 import SelectCard from "../components/SelectCard";
+import firebase from "firebase";
 
 const stringOptions = [];
 export default {
@@ -53,7 +54,7 @@ export default {
     },
     submit(name) {
       axios
-        .get(`https://api.scryfall.com/cards/named?fuzzy=${name}`)
+        .get(`https://api.scryfall.com/cards/named?&pretty=true&fuzzy=${name}`)
         .then(response => {
           if (response) {
             this.card = response.data;
@@ -75,12 +76,16 @@ export default {
       update(() => {
         const needle = val.toLowerCase();
         axios
-          .get(`https://api.scryfall.com/cards/autocomplete?q=${val}`)
+          .get(
+            `https://api.scryfall.com/cards/search?order=cmc&pretty=true&include_multilingual=true&q=${val}`
+          )
           .then(response => {
             if (response) {
-              this.options = response.data.data.filter(
-                v => v.toLowerCase().indexOf(needle) > -1
-              );
+              console.log(response.data.data.map(cards => cards.printed_name)
+                .filter(Boolean));
+              this.options = response.data.data
+                .map(cards => cards.name)
+                .filter(Boolean);
             }
           })
           .catch(err => {
